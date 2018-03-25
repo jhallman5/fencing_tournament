@@ -16,8 +16,17 @@ class Linked_List:
     def __init__(self, head=None):
         self.head = head
 
-    def insert(node):
+    def insert(self, data):
+        current = self.head
         if not self.head:
-            self.head = node
-        else:
-            return None
+            self.head = Node(data)
+            return
+        while current.next_node:
+            current = current.next_node
+        current.next_node = Node(data)
+
+    def get_tail_data(self):
+        current = self.head
+        while current.next_node:
+            current = current.next_node
+        return current.data

@@ -1,8 +1,9 @@
 import sys
 import csv
-from linked_list import Node
+from linked_list import Node, Linked_List
 
 with open(sys.argv[1], newline='') as csv_file:
+    fencer_list = Linked_List()
     reader = csv.reader(csv_file, delimiter='\t')
     for row in reader:
         fencer = {
@@ -11,5 +12,5 @@ with open(sys.argv[1], newline='') as csv_file:
             'team': row[0].split(',')[2],
             'rank':row[0].split(',')[3]
             }
-        node = Node(fencer)
-        print(node.data)
+        fencer_list.insert(fencer)
+    print(fencer_list.get_tail_data())
