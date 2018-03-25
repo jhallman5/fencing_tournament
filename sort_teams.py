@@ -13,4 +13,4 @@ with open(sys.argv[1], newline='') as csv_file:
             'rank':row[0].split(',')[3]
             }
         fencer_list.insert(fencer)
-    print(fencer_list.get_tail_data())
+    fencer_list.print_LL()
