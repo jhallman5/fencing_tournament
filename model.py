@@ -26,7 +26,6 @@ def determine_num_pools(linked_list):
         return int(Num_fencers / 7)
     if check_pool_size(Num_fencers, 5):
         return int(Num_fencers / 5)
-    return True
 
 def number_of_participates(linked_list):
     ''' Returns the number of participates. '''
@@ -55,19 +54,22 @@ def create_init_pools(linked_list, num_pools):
     init_pools = []
     for i in range(0, num_pools):
         init_pools.append([])
-    print(init_pools)
     current_node = linked_list.head
     direction_forward = False
     while current_node:
         sorted_list.append(current_node.data)
         current_node = current_node.next_node
-    # print(sorted_list)
     for index, fencer in enumerate(sorted_list):
         if sorted_list.index(fencer) % num_pools == 0:
             direction_forward = not direction_forward
         if direction_forward:
-            print(index % num_pools)
-            # init_pools.append(fencer)
+            init_pools[index % num_pools].append(fencer)
         else:
-            print((num_pools - 1) - (index % num_pools))
-        #     init_pools.append(fencer)
+            init_pools[(num_pools - 1) - (index % num_pools)].append(fencer)
+    print('Pool 1 ---> ', init_pools[0])
+    print('-------------')
+    print('Pool 2 ---> ', init_pools[1])
+    print('-------------')
+    print('Pool 3 ---> ', init_pools[2])
+    print('-------------')
+    print('Pool 4 ---> ', init_pools[3])
