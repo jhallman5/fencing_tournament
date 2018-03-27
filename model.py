@@ -48,3 +48,26 @@ def check_pool_size(num_fencers, proposed_pool_size):
     if remaining_fencers / number_of_pools <= 1 :
         return True
     return False
+
+def create_init_pools(linked_list, num_pools):
+    ''' Creates initial pools of equal difficulty using serpentine method. '''
+    sorted_list = []
+    init_pools = []
+    for i in range(0, num_pools):
+        init_pools.append([])
+    print(init_pools)
+    current_node = linked_list.head
+    direction_forward = False
+    while current_node:
+        sorted_list.append(current_node.data)
+        current_node = current_node.next_node
+    # print(sorted_list)
+    for index, fencer in enumerate(sorted_list):
+        if sorted_list.index(fencer) % num_pools == 0:
+            direction_forward = not direction_forward
+        if direction_forward:
+            print(index % num_pools)
+            # init_pools.append(fencer)
+        else:
+            print((num_pools - 1) - (index % num_pools))
+        #     init_pools.append(fencer)
